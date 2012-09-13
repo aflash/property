@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Schedule type:</b>
+  <%= @maintenance_schedule.schedule_type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @maintenance_schedule.description %>
+</p>
+
+<p>
+  <b>Schedule date:</b>
+  <%= @maintenance_schedule.schedule_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_maintenance_schedule_path(@maintenance_schedule) %> |
+<%= link_to 'Back', maintenance_schedules_path %>

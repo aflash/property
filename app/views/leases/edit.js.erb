@@ -1,0 +1,17 @@
+// get id of element
+var id = '<%= dom_id(@lease) %>';
+
+// display hidden tr then remove show page
+$('tr.show_lease').prev('tr').css('display', '');
+$('tr.show_lease').remove();
+
+// render partial _lease.html.erb
+$('#' + id).css('display', 'none').after('<%= escape_javascript(render('leases/edit')) %>');
+
+// Close open show page on properties screen
+$('div.close').click(function () {
+  $('tr.show_lease').prev('tr').css('display', '');
+  $('tr.show_lease').remove();
+});
+
+$('.datepicker').datepicker();

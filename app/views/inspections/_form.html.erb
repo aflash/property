@@ -1,0 +1,44 @@
+<%= form_for(@inspection, :html => { :class => 'form-horizontal' }) do |f| %>
+  <% if @inspection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inspection.errors.count, "error") %> prohibited this inspection from being saved:</h2>
+
+      <ul>
+      <% @inspection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :inspection_type, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :inspection_type %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :officer, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :officer %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :inspection_date, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :inspection_date, :class => 'datepicker' %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', inspections_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

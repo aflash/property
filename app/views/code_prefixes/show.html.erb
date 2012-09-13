@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Prefix:</b>
+  <%= @code_prefix.prefix %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @code_prefix.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_code_prefix_path(@code_prefix) %> |
+<%= link_to 'Back', code_prefixes_path %>

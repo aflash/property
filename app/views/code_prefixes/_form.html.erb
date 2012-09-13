@@ -1,0 +1,32 @@
+<%= form_for(@code_prefix, :html => { :class => 'form-vertical' }) do |f| %>
+  <% if @code_prefix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@code_prefix.errors.count, "error") %> prohibited this code_prefix from being saved:</h2>
+
+      <ul>
+      <% @code_prefix.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :prefix, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :prefix %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', code_prefixes_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

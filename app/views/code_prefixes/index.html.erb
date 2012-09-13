@@ -1,0 +1,29 @@
+<h1>Code Prefixes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Prefix</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @code_prefixes.each do |code_prefix| %>
+  <tr>
+    <td><%= link_to code_prefix.id, code_prefix %></td>
+    <td><%= code_prefix.prefix %></td>
+    <td><%= code_prefix.description %></td>
+    <td>
+      <%= link_to 'Edit', edit_code_prefix_path(code_prefix), :class => 'btn btn-mini' %>
+      <%= link_to 'Destroy', code_prefix, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Code Prefix', new_code_prefix_path, :class => 'btn btn-primary' %>
+
+<%= paginate @code_prefixes %>

@@ -1,0 +1,42 @@
+<%= link_to 'New Tenant', new_tenant_path %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone number</th>
+    <th>Phone number 2</th>
+    <th>Lease</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tenants.each do |tenant| %>
+  <tr id="tenant_<%= tenant.id %>" data-href="<%= tenant_path(tenant) %>" >
+    <td><%= tenant.name %></td>
+    <td><%= tenant.address %></td>
+    <td><%= tenant.phone_number %></td>
+    <td><%= tenant.phone_number_2 %></td>
+    <td><%= tenant.lease_id %></td>
+    <td>
+      <%= link_to 'Show', tenant, :remote => true, :class => "show_tenant" %>
+      <%= link_to 'Edit', edit_tenant_path(tenant), :remote => true, :class => "edit_tenant btn btn-mini" %>
+    <%= link_to 'Destroy', tenant, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => "delete_tenant btn btn-mini btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% paginate @tenants %>
+
+<script type="text/javascript">
+$(function () {
+    $('tr[data-href] > td').not('.nohref').click(function() {
+        window.location = $(this).parent().attr('data-href');
+    });
+})
+
+</script>
+

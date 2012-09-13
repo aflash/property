@@ -1,0 +1,59 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  type_of_lease: MyString
+  term_of_lease: MyString
+  lease_per_annum: MyString
+  expiry_date: MyString
+  dr_unique_id: 1
+  reference_number: MyString
+  commencement_date: 2011-02-21
+  payment_frequency: MyString
+  contact_name: MyString
+  contact_address: MyString
+  contact_phone_number: MyString
+  contact_phone_number_2: MyString
+  rent_review: MyString
+  last_rent_review_date: 2011-02-21
+  customer_id: 1
+  inc_gst: MyString
+  who_pays_the_rates: MyString
+  insurance_percentage: 9.99
+  rates_percentage: 9.99
+  floor_area: 1
+  previous_rent_1: MyString
+  previous_rent_2: MyString
+  previous_rent_3: MyString
+  premises_type_of_use: MyString
+  dhb_bond_id: MyString
+  dhb_landlord_id: MyString
+  dhb_property_id: MyString
+
+two:
+  type_of_lease: MyString
+  term_of_lease: MyString
+  lease_per_annum: MyString
+  expiry_date: MyString
+  dr_unique_id: 1
+  reference_number: MyString
+  commencement_date: 2011-02-21
+  payment_frequency: MyString
+  contact_name: MyString
+  contact_address: MyString
+  contact_phone_number: MyString
+  contact_phone_number_2: MyString
+  rent_review: MyString
+  last_rent_review_date: 2011-02-21
+  customer_id: 1
+  inc_gst: MyString
+  who_pays_the_rates: MyString
+  insurance_percentage: 9.99
+  rates_percentage: 9.99
+  floor_area: 1
+  previous_rent_1: MyString
+  previous_rent_2: MyString
+  previous_rent_3: MyString
+  premises_type_of_use: MyString
+  dhb_bond_id: MyString
+  dhb_landlord_id: MyString
+  dhb_property_id: MyString

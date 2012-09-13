@@ -1,0 +1,44 @@
+<%= form_for(@code, :html => { :class => 'form-horizontal' }) do |f| %>
+  <% if @code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@code.errors.count, "error") %> prohibited this code from being saved:</h2>
+
+      <ul>
+      <% @code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :prefix, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select(:prefix, CodePrefix.all, :prefix, :description, {:include_blank => true}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :code, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :code, :class => 'span1' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :historic, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.check_box :historic %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', codes_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

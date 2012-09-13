@@ -1,0 +1,32 @@
+<%= link_to 'New Condition', new_condition_path( :lease_id => @lease) %>
+<table class="table table-striped">
+    <th>Condition type</th>
+    <th>Description</th>
+    <th>Actions</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @conditions.each do |condition| %>
+  <tr id="condition_<%= condition.id %>" data-href="<%= condition_path(condition) %>" >
+  <tr>
+    <td><%= Code.get_description('CONDITION_TYPE',condition.condition_type) %></td>
+    <td><%= condition.description %></td>
+    <td>
+      <%= link_to 'Show', condition %>
+      <%= link_to 'Edit', edit_condition_path(condition), :class => 'btn btn-mini' %>
+    <%= link_to 'Destroy', condition, :confirm => 'Are you sure?', :method => :delete , :class => 'btn btn-mini btn-danger'%></td>
+  </tr>
+<% end %>
+</table>
+
+<script type="text/javascript">
+$(function () {
+    $('tr[data-href] > td').not('.nohref').click(function() {
+        window.location = $(this).parent().attr('data-href');
+    });
+})
+
+</script>
+
+

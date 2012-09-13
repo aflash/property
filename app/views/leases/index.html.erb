@@ -1,0 +1,45 @@
+<h1>Leases</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type of lease</th>
+      <th>Term of lease</th>
+      <th>Lease per annum</th>
+      <th>Expiry date</th>
+      <th>DR unique</th>
+      <th>Reference number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @leases.each do |lease| %>
+  <tr data-href="<%= lease_path(lease) %>" >
+      <td><%= link_to lease.id, lease_path(lease) %></td>
+      <td><%= lease.type_of_lease %></td>
+      <td><%= lease.term_of_lease %></td>
+      <td><%= lease.lease_per_annum %></td>
+      <td><%= lease.expiry_date %></td>
+      <td><%= lease.dr_unique_id %></td>
+      <td><%= lease.reference_number %></td>
+      <td>
+        <%= link_to 'Edit', edit_lease_path(lease), :class => 'btn btn-mini' %>
+        <%= link_to 'Destroy', lease, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Lease', new_lease_path, :class => 'btn btn-primary' %>
+
+<%= paginate @leases %>
+<script type="text/javascript">
+$(function () {
+    $('tr[data-href] > td').not('.nohref').click(function() {
+        window.location = $(this).parent().attr('data-href');
+    });
+})
+
+</script>

@@ -1,0 +1,132 @@
+<%= form_for(@property, :html => { :class => 'form-horizontal' }) do |f| %>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :type_of_property, 'Property Type', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.collection_select(:type_of_property, Code.property_type.all, :code, :description, { :include_blank => true }) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :ra_unique_id, 'Valuation no', :class => 'control-label auto_search_field' %>
+      <div class="controls">
+        <%= f.text_field :ra_unique_id %>
+        <%= button_to_function 'Search', :class => 'btn' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :location_override, 'Location', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :location_override, :class => 'span4' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :special_legal_description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :special_legal_description, :class => 'span4' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :name, 'Property name', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :hectares_override, :class => 'control-label' %>
+      <div class="controls">
+        <div class="input-append">
+          <%= f.text_field :hectares_override, :class => 'span2' %><span class="add-on">Ha</span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :capital_value_override, :class => 'control-label' %>
+      <div class="controls">
+        <div class="input-prepend input-append">
+          <span class="add-on">$</span><%= f.text_field :capital_value_override, :class => 'span2' %><span class="add-on">.00</span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :district_plan_detail_zone, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :district_plan_detail_zone %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :gl_unique_id, 'General Ledger no', :class => 'control-label auto_search_field' %>
+      <div class="controls">
+        <%= f.text_field :gl_unique_id %>
+        <%= button_to_function 'Search', :class => 'btn' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :block, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :block %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :file_11_id, 'File 11', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :file_11_id %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :valuation_date, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :valuation_date, :class => 'span2 datepicker' %>
+        <p class="help-block">Use dd/mm/yyyy format</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :purchase_date, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :purchase_date, :class => 'span2 datepicker' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :lat, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :lat %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :long, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :long %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :property_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :property_id %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', properties_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+        $("#property_details").tabs();
+  <% unless params[:selected_tab_name].blank? %>
+    $("#property_details").tabs("select", '<%= params[:selected_tab_name] %>');
+  <% end %>
+})
+</script>

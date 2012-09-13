@@ -1,0 +1,16 @@
+// get id of element
+var id = '<%= dom_id(@tenant) %>';
+
+// display hidden tr then remove show page
+$('tr.show_tenant').prev('tr').css('display', '');
+$('tr.show_tenant').remove();
+
+// render partial _tenant.html.erb
+$('#' + id).css('display', 'none').after('<%= escape_javascript(render(@tenant)) %>');
+
+// Close open show page on properties screen
+$('div.close').click(function () {
+  $('tr.show_tenant').prev('tr').css('display', '');
+  $('tr.show_tenant').remove();
+});
+

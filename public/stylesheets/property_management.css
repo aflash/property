@@ -1,0 +1,17 @@
+.table_details th {
+  width: 20%;
+  border: 1px solid #466094;
+  background-color: #6489D4;
+  padding-top: 2px;
+  text-align: right;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+.table_details label {
+  color: white;
+}
+
+.table_details td:hover {
+  background-color: #B0B0B0;
+}

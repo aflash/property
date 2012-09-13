@@ -1,0 +1,71 @@
+<tr class="show_tenant">
+  <td colspan="6">
+  <div id="tenant_details">
+  <ul>
+    <li><a href="#tab_tenant"><span>Tenant Details</span></a></li>
+    <li><a href="#tab_next_of_kin"><span>Next Of Kin Details</span></a></li>
+    <li><a href="#tab_emergency_contact"><span>Emergency Contact Details</span></a></li>
+  </ul>
+
+  <div id="tab_tenant">
+    <table class="table_details">
+      <tr>
+        <th><%= label_tag :name %></th>
+        <td><%= @tenant.name %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag :address %></th>
+        <td><%= @tenant.address %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag :phone_number %></th>
+        <td><%= @tenant.phone_number %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag :phone_number_2 %></th>
+        <td><%= @tenant.phone_number_2 %></td>
+      </tr>
+    </table>
+  </div>
+  <div id="tab_next_of_kin">
+    <table class="table_details">
+      <tr>
+        <th><%= label_tag :next_of_kin_name %></th>
+        <td><%= @tenant.next_of_kin_name %></td>
+      </tr>
+        <th><%= label_tag :next_of_kin_address %></th>
+        <td><%= @tenant.next_of_kin_address %></td>
+      </tr>
+        <th><%= label_tag :next_of_kin_phone_number %></th>
+        <td><%= @tenant.next_of_kin_phone_number %></td>
+      </tr>
+    </table>
+  </div>
+  <div id="tab_emergency_contact">
+    <table class="table_details">
+      <tr>
+        <th><%= label_tag :emergency_contact_name %></th>
+        <td><%= @tenant.emergency_contact_name %></td>
+      </tr>
+        <th><%= label_tag :emergency_contact_address %></th>
+        <td><%= @tenant.emergency_contact_address %></td>
+      </tr>
+        <th><%= label_tag :emergency_contact_phone_number %></th>
+        <td><%= @tenant.emergency_contact_phone_number %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="close" onmouseover="this.style.cursor='pointer'">
+    <img src="/property_management/images/oxygen/32x32/actions/clear_left.png" border="0">
+  </div>
+  </td>
+</tr>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+        $("#tenant_details").tabs();
+  <% unless params[:selected_tab_name].blank? %>
+    $("#tenant_details").tabs("select", '<%= params[:selected_tab_name] %>');
+  <% end %>
+})
+</script>

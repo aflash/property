@@ -1,0 +1,30 @@
+<h1>Inspections</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Inspection Type</th>
+      <th>Description</th>
+      <th>Officer</th>
+      <th>Inspection Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @inspections.each do |inspection| %>
+    <tr>
+      <td><%= link_to inspection.id, inspection %></td>
+      <td><%= inspection.inspection_type %></td>
+      <td><%= inspection.description %></td>
+      <td><%= inspection.officer %></td>
+      <td><%= inspection.inspection_date %></td>
+      <td>
+        <%= link_to 'Edit', edit_inspection_path(inspection), :class => 'btn btn-mini' %>
+        <%= link_to 'Destroy', inspection, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Inspection', new_inspection_path, :class => 'btn btn-primary' %>

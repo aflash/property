@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  condition_type: MyString
+  description: MyString
+
+two:
+  condition_type: MyString
+  description: MyString

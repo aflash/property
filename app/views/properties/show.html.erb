@@ -1,0 +1,109 @@
+<p id="notice"><%= notice %></p>
+
+<div id="property_details" class="show_enquiry">
+  <ul>
+    <li><a href="#property"><span>Property</span></a></li>
+    <li><a href="#leases"><span>Leases</span></a></li>
+    <li><a href="#tenants"><span>Tenants</span></a></li>
+  </ul>
+
+  <div id="property">
+    <table class="table table-bordered table_details">
+      <tr>
+        <th> <%= label_tag @property.id, "Property ID" %></th>
+        <td><%= @property.id %></td>
+      </tr>
+      <tr>
+        <th> <%= label_tag @property.type_of_property, "Property Type" %></th>
+        <td><%= Code.get_description("PROPERTY_TYPE",@property.type_of_property) %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.ra_unique_id, "Valuation #" %></th>
+        <td><%= @property.ra_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.location_override, "Location" %></th>
+        <td><%= @property.location_override %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.special_legal_description, "Special Legal Description" %></th>
+        <td><%= @property.special_legal_description %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.name, "Property Name" %></th>
+        <td><%= @property.name %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.hectares_override, "Hectares" %></th>
+        <td><%= @property.hectares_override %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.capital_value_override, "Capital Value" %></th>
+        <td><%= @property.capital_value_override %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.district_plan_detail_zone, "District Plan Zone" %></th>
+        <td><%= @property.district_plan_detail_zone %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.gl_unique_id, "General Ledger #" %></th>
+        <td><%= @property.gl_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.block, "Block" %></th>
+        <td><%= @property.block %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.file_11_id, "File 11" %></th>
+        <td><%= @property.file_11_id %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.valuation_date, "Valuation Date" %></th>
+        <td><%= @property.valuation_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.purchase_date, "Purchase Date" %></th>
+        <td><%= @property.purchase_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.lat, "latitude" %></th>
+        <td><%= @property.lat %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.long, "longditude" %></th>
+        <td><%= @property.long %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @property.property_id, "Property sublink" %></th>
+        <td><%= @property.property_id %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="leases">
+      <%= render "leases" %>
+  </div>
+
+  <div id="tenants">
+      <%= render "tenants" %>
+  </div>
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+        $("#property_details").tabs();
+  <% unless params[:selected_tab_name].blank? %>
+    $("#property_details").tabs("select", '<%= params[:selected_tab_name] %>');
+  <% end %>
+
+
+  $(".pagination a").live("click", function() {
+    $(".pagination").html("page is loading");
+    $.get(this.href, null, null, "script");
+    return false;
+  });
+
+})
+</script>
+

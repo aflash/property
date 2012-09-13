@@ -1,0 +1,48 @@
+<h1>Properties</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Valuation No</th>
+      <th>Location</th>
+      <th>Name of property</th>
+      <th>Special Legal Description</th>
+      <th>GL Account</th>
+      <th>File 11</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @properties.each do |property| %>
+  <tr data-href="<%= property_path(property) %>" >
+      <td><%= link_to property.id, property_path(property) %></td>
+      <td><%= Code.get_description("PROPERTY_TYPE",property.type_of_property) %></td>
+      <td><%= property.ra_unique_id %></td>
+      <td><%= property.location_override %></td>
+      <td><%= property.name %></td>
+      <td><%= property.special_legal_description %></td>
+      <td><%= property.gl_unique_id %></td>
+      <td><%= property.file_11_id %></td>
+      <td>
+        <%= link_to 'Edit', edit_property_path(property), :class => 'btn btn-mini' %>
+        <%= link_to 'Destroy', property, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Property', new_property_path, :class => 'btn btn-primary' %>
+
+<%= paginate @properties %>
+<script type="text/javascript">
+$(function () {
+    $('tr[data-href] > td').not('.nohref').click(function() {
+        window.location = $(this).parent().attr('data-href');
+    });
+})
+
+</script>
+

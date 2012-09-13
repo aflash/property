@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  schedule_type: MyString
+  description: MyString
+  schedule_date: 2011-11-05
+
+two:
+  schedule_type: MyString
+  description: MyString
+  schedule_date: 2011-11-05

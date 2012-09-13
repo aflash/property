@@ -1,0 +1,79 @@
+<%= link_to "New" , new_lease_path( :property_id => @property) %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Type of lease</th>
+    <th>Term of lease</th>
+    <th>Lease per annum</th>
+    <th>Expiry date</th>
+    <th>DR unique</th>
+    <th>Reference number</th>
+    <th>Actions</th>
+<!--    <th>Commencement date</th>
+    <th>Payment frequency</th>
+    <th>Contact name</th>
+    <th>Contact address</th>
+    <th>Contact phone number</th>
+    <th>Contact phone number 2</th>
+    <th>Rent review</th>
+    <th>Last rent review date</th>
+    <th>Customer</th>
+    <th>Inc GST</th>
+    <th>Who pays the rates</th>
+    <th>Insurance percentage</th>
+    <th>Rates percentage</th>
+    <th>Floor area</th>
+    <th>Previous rent 1</th>
+    <th>Previous rent 2</th>
+    <th>Previous rent 3</th>
+    <th>Premises type of use</th>
+    <th>DHB bond</th>
+    <th>DHB landlord</th>
+    <th>DHB property</th> -->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @leases.each do |lease| %>
+  <tr id="lease_<%= lease.id %>" data-href="<%= lease_path(lease) %>" >
+    <td><%= lease.type_of_lease %></td>
+    <td><%= lease.term_of_lease %></td>
+    <td><%= lease.lease_per_annum %></td>
+    <td><%= lease.expiry_date %></td>
+    <td><%= lease.dr_unique_id %></td>
+    <td><%= lease.reference_number %></td>
+<!--    <td><%= lease.commencement_date %></td>
+    <td><%= lease.payment_frequency %></td>
+    <td><%= lease.rent_review %></td>
+    <td><%= lease.last_rent_review_date %></td>
+    <td><%= lease.inc_gst %></td>
+    <td><%= lease.who_pays_the_rates %></td>
+    <td><%= lease.insurance_percentage %></td>
+    <td><%= lease.rates_percentage %></td>
+    <td><%= lease.area %></td>
+    <td><%= lease.previous_rent_1 %></td>
+    <td><%= lease.previous_rent_2 %></td>
+    <td><%= lease.previous_rent_3 %></td>
+    <td><%= lease.premises_type_of_use %></td>
+    <td><%= lease.dhb_bond_id %></td> -->
+    <td>
+      <%= link_to 'Show', lease, :remote => true, :class => 'show_lease' %>
+      <%= link_to 'Edit', edit_lease_path(lease), :remote => true, :class => 'edit_lease btn btn-mini' %>
+      <%= link_to 'Destroy', lease, :confirm => 'Are you sure?', :method => :delete, :remote=>true, :class=>'delete_lease btn btn-mini btn-danger' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @leases %>
+<br />
+
+<script type="text/javascript">
+$(function () {
+    $('tr[data-href] > td').not('.nohref').click(function() {
+        window.location = $(this).parent().attr('data-href');
+    });
+})
+
+</script>
+

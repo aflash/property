@@ -1,0 +1,29 @@
+<h1>Maintenance Schedules</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Schedule type</th>
+      <th>Description</th>
+      <th>Schedule date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @maintenance_schedules.each do |maintenance_schedule| %>
+    <tr>
+      <td><%= link_to maintenance_schedule.id, maintenance_schedule %></td>
+      <td><%= maintenance_schedule.schedule_type %></td>
+      <td><%= maintenance_schedule.description %></td>
+      <td><%= maintenance_schedule.schedule_date %></td>
+      <td>
+        <%= link_to 'Edit', edit_maintenance_schedule_path(maintenance_schedule), :class => 'btn btn-mini' %>
+        <%= link_to 'Destroy', maintenance_schedule, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Maintenance Schedule', new_maintenance_schedule_path, :class => 'btn btn-primary' %>

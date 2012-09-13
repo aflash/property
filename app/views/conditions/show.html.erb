@@ -1,0 +1,26 @@
+<h1>Condition</h1>
+<p id="notice"><%= notice %></p>
+
+<div>
+  <table class="table table-bordered table_details">
+    <tr>
+      <th>Lease Id :</th>
+      <td><%= link_to @condition.lease_id, lease_path(@condition.lease_id) %></td>
+    </tr>
+     <tr>
+       <th>Condition type:</th>
+       <td><%= @condition.condition_type %></td>
+     <tr>
+     <tr>
+       <th>Condition type Detail:</th>
+       <td><%= Code.get_description('CONDITION_TYPE',@condition.condition_type) %></td>
+     <tr>
+     <tr>
+       <th>Description:</th>
+       <td><%= @condition.description %></td>
+     </tr>
+   </table>
+ </div>
+
+<%= link_to 'Edit', edit_condition_path(@condition) %> |
+<%= link_to 'Back', conditions_path %>

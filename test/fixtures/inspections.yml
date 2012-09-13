@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  inspection_type: MyString
+  description: MyString
+  officer: MyString
+  inspection_date: 2011-11-05
+
+two:
+  inspection_type: MyString
+  description: MyString
+  officer: MyString
+  inspection_date: 2011-11-05

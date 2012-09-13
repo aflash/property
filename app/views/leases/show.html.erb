@@ -1,0 +1,207 @@
+<h1>Lease</h1>
+<p id="notice"><%= notice %></p>
+
+<div id="lease_details" class="show_enquiry">
+  <ul>
+    <li><a href="#lease"><span>Lease Details</span></a></li>
+    <li><a href="#rent"><span>Rent Details</span></a></li>
+    <li><a href="#term"><span>Term Details</span></a></li>
+    <li><a href="#conditions"><span>Conditions</span></a></li>
+  </ul>
+
+  <div id="lease">
+    <table class="table table-bordered table_details">
+      <tr>
+        <th><%= label_tag @lease.property_id, "Property Id" %></th>
+        <td><%= link_to @lease.property_id, property_path(@lease.property_id) %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.type_of_lease, "Type of Lease" %></th>
+        <td><%= Code.get_description("LEASE_TYPE",@lease.type_of_lease) %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.commencement_date, "Commencement Date" %></th>
+        <td><%= @lease.commencement_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.expiry_date, "Expiry Date" %></th>
+        <td><%= @lease.expiry_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.termination_type, "Termination Type" %></th>
+        <% if @lease.termination_type.blank? %>
+          <td><%= @lease.termination_type %></td>
+        <% else %>
+          <td><%= Code.get_description("TERMINATION_TYPE", @lease.termination_type) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.termination_date, "Termination Date" %></th>
+        <td><%= @lease.termination_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.reference_number, "reference number" %></th>
+        <td><%= @lease.reference_number %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.site_unit, "Site/Unit #" %></th>
+        <td><%= @lease.site_unit %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.area, "Area" %></th>
+        <td><%= @lease.area %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.lead_in_time, "Lead in Time" %></th>
+        <td><%= Code.get_description("LEAD_IN", @lease.lead_in_time) %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.premises_type_of_use, "Type of Use" %></th>
+        <td><%= @lease.premises_type_of_use %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.dhb_bond_id, "Dept of Bulding & Housing Bond Id" %></th>
+        <td><%= @lease.dhb_bond_id %></td>
+      </tr>
+    </table>
+  </div>
+  <div id="rent">
+    <table class="table table-bordered table_details">
+      <tr>
+        <th><%= label_tag @lease.dr_unique_id, "Debtors" %></th>
+        <td><%= @lease.dr_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.invoice_code, "Invoice Code" %></th>
+        <td><%= @lease.invoice_code %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.gl_unique_id, "General Ledger #" %></th>
+        <td><%= @lease.gl_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.payment_frequency, "Payment Frequency" %></th>
+        <td><%= Code.get_description("PAYMENT_FREQUENCY", @lease.payment_frequency) %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.rent_fee, "Rent/Fee $" %></th>
+        <td><%= @lease.rent_fee %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.rent_review, "Next Rent Review" %></th>
+        <td><%= @lease.rent_review %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.last_rent_review_date, "last Rent Review Date" %></th>
+        <td><%= @lease.last_rent_review_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.review_valuation, "Review Valuation" %></th>
+        <td><%= @lease.review_valuation %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.credit_check, "Credit Check" %></th>
+        <td><%= @lease.credit_check %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.risk_insurance, "Risk Insurance Cover" %></th>
+        <td><%= @lease.risk_insurance %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.risk_insurance_amount, "Risk Insurance Amount" %></th>
+        <td><%= @lease.risk_insurance_amount %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.inc_gst, "GST inclusive Y/N" %></th>
+        <td><%= @lease.inc_gst %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.cpi_adjustment_date, "CPI Adjustment Date" %></th>
+        <td><%= @lease.cpi_adjustment_date %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.previous_rent_1, "Previous Rent 1" %></th>
+        <td><%= @lease.previous_rent_1 %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.previous_rent_2, "Previous Rent 2" %></th>
+        <td><%= @lease.previous_rent_2 %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.previous_rent_3, "Previous Rent 3" %></th>
+        <td><%= @lease.previous_rent_3 %></td>
+      </tr>
+  </div>
+    </table>
+  </div>
+  <div id="term">
+    <table class="table table-bordered table_details">
+      <tr>
+        <th><%= label_tag @lease.term_of_lease, "Term" %></th>
+        <% if @lease.term_of_lease.blank? %>
+          <td><%= @lease.term_of_lease %></td>
+        <% else %>
+          <td><%= Code.get_description("LEASE_TERM", @lease.term_of_lease) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.lease_per_annum, "Lease Pern Annum" %></th>
+        <td><%= @lease.lease_per_annum %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.who_pays_the_rates, "Who Pays the Rates" %></th>
+        <td><%= @lease.who_pays_the_rates %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.rates_percentage, "Rates Percentage" %></th>
+        <td><%= @lease.rates_percentage %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.power, "Power" %></th>
+        <td><%= @lease.power %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.water, "Water" %></th>
+        <td><%= @lease.water %></td>
+      </tr>
+      <% unless Code.site.where(:code => 'ENVIRONMENT_WAIKATO').blank? %>
+      <tr>
+        <th><%= label_tag @lease.environment_waikato, "Environment Waikato" %></th>
+        <td><%= @lease.environment_waikato %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <th><%= label_tag @lease.council_resolution, "Council Resolution" %></th>
+        <td><%= @lease.council_resolution %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.council_resolution_link, "Resolution Link" %></th>
+        <td><%= @lease.council_resolution_link %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.insurance_percentage, "Insurance %" %></th>
+        <td><%= @lease.insurance_percentage %></td>
+      </tr>
+      <tr>
+        <th><%= label_tag @lease.interest_rate, "Default Interest Rate" %></th>
+        <td><%= @lease.interest_rate %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="conditions">
+    <%= render "conditions" %>
+  </div>
+
+<%= link_to 'Edit', edit_lease_path(@lease) %> |
+<%= link_to 'Back', leases_path %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+        $("#lease_details").tabs();
+  <% unless params[:selected_tab_name].blank? %>
+    $("#lease_details").tabs("select", '<%= params[:selected_tab_name] %>');
+  <% end %>
+})
+</script>
+

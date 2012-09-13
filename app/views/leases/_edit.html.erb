@@ -1,0 +1,233 @@
+<tr class="show_lease">
+  <td colspan="6">
+    <%= form_for(@lease, :remote => true) do |f| %>
+  <% if @lease.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lease.errors.count, "error") %> prohibited this lease from being saved:</h2>
+
+      <ul>
+      <% @lease.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id="lease_details" class="show_enquiry">
+  <ul>
+    <li><a href="#lease"><span>Lease Details</span></a></li>
+    <li><a href="#rent"><span>Rent Details</span></a></li>
+    <li><a href="#term"><span>Term Details</span></a></li>
+  </ul>
+
+  <div id="lease">
+    <table class="table_details">
+      <tr>
+        <th><%= f.label :property_id %></th>
+        <% if params[:property_id].present? %>
+          <td><%= f.text_field :property_id, :value => params[:property_id] %></td>
+        <% else %>
+          <td><%= f.text_field :property_id %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th><%= f.label :type_of_lease %></th>
+        <td><%= f.collection_select(:type_of_lease, Code.lease_type.all, :code, :description, {:include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :commencement_date %></th>
+        <td><%= f.text_field :commencement_date, :class => 'datepicker' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :expiry_date %></th>
+        <td><%= f.text_field :expiry_date, :class => 'datepicker' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :termination_type %></th>
+        <td><%= f.collection_select(:termination_type, Code.termination_type.all, :code, :description, {:include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :termination_date %></th>
+        <td><%= f.text_field :termination_date, :class => 'datepicker' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :reference_number %></th>
+        <td><%= f.text_field :reference_number %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :site_unit, "Site/Unit #" %></th>
+        <td><%= f.text_field :site_unit %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :area %></th>
+        <td><%= f.text_field :area %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :lead_in_time %></th>
+        <td><%= f.collection_select(:lead_in_time, Code.lead_in_time.all, :code, :description, {:include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :premises_type_of_use %></th>
+        <td><%= f.text_area :premises_type_of_use, :size => "30x2", :style => "vertical-align:text-top;" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :dhb_bond_id, "Dept Of Bulding & Housing Bond Id" %></th>
+        <td><%= f.text_field :dhb_bond_id %></td>
+      </tr>
+    </table>
+  </div>
+  <div id="rent">
+    <table class="table_details">
+      <tr>
+        <th><%= f.label :dr_unique_id, "Debtors" %></th>
+        <td><%= f.text_field :dr_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :invoice_code, "Invoice Code" %></th>
+        <td><%= f.text_field :invoice_code %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :gl_unique_id, "General Ledger #" %></th>
+        <td><%= f.text_field :gl_unique_id %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :payment_frequency %></th>
+        <td><%= f.collection_select(:payment_frequency, Code.payment_frequency.all, :code, :description, {:include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :rent_fee, "Rent/Fee $" %></th>
+        <td><%= f.text_field :rent_fee %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :rent_review, "Next Rent Review" %></th>
+        <td><%= f.text_field :rent_review %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :last_rent_review_date %></th>
+        <td><%= f.text_field :last_rent_review_date, :class => 'datepicker' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :review_valuation %></th>
+        <td><%= f.check_box :review_valuation %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :credit_check %></th>
+        <td><%= f.text_field :credit_check %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :risk_insurance, "Risk Insurance Cover" %></th>
+        <td><%= f.check_box :risk_insurance %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :risk_insurance_amount %></th>
+        <td><%= f.text_field :risk_insurance_amount %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :inc_gst %></th>
+        <td><%= f.text_field :inc_gst %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :cpi_adjustment_date %></th>
+        <td><%= f.text_field :cpi_adjustment_date, :class => 'datepicker' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :previous_rent_1 %></th>
+        <td><%= f.text_field :previous_rent_1 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :previous_rent_2 %></th>
+        <td><%= f.text_field :previous_rent_2 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :previous_rent_3 %></th>
+        <td><%= f.text_field :previous_rent_3 %></td>
+      </tr>
+  </div>
+    </table>
+  </div>
+  <div id="term">
+    <table class="table_details">
+      <tr>
+        <th><%= f.label :term_of_lease %></th>
+        <td><%= f.collection_select(:term_of_lease, Code.lease_term.all, :code, :description, {:include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :lease_per_annum %></th>
+        <td><%= f.text_field :lease_per_annum %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :who_pays_the_rates %></th>
+        <td><%= f.select :who_pays_the_rates, options_for_select(["Select","Lessee","lessor","Not applicable"], :disabled => ["Select"]) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :rates_percentage %></th>
+        <td><%= f.text_field :rates_percentage %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :power %></th>
+        <td><%= f.select :power, options_for_select(["Select","Lessee","lessor","Not applicable"], :disabled => ["Select"]) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :water %></th>
+        <td><%= f.select :water, options_for_select(["Select","Lessee","lessor","Not applicable"], :disabled => ["Select"]) %></td>
+      </tr>
+      <% if Code.site.eql?('ENVIRONMENT_WAIKATO') %>
+      <tr>
+        <th><%= f.label :environment_waikato %></th>
+        <td><%= f.select :environment_waikato, options_for_select(['Select', 'Lessee', 'Lessor', 'Not applicable'], :disabled => ['Select']) %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <th><%= f.label :council_resolution %></th>
+        <td><%= f.check_box :council_resolution %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :council_resolution_link %></th>
+        <td><%= f.text_field :council_resolution_link %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :insurance_percentage %></th>
+        <td><%= f.text_field :insurance_percentage %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :interest_rate, "Default Interest Rate" %></th>
+        <td><%= f.text_field :interest_rate %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <div class="close" onmouseover="this.style.cursor='pointer'">
+    <img src="/property_management/images/oxygen/32x32/actions/clear_left.png" border="0">
+  </div>
+<% end %>
+  </td>
+</tr>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+        $("#lease_details").tabs();
+  <% unless params[:selected_tab_name].blank? %>
+    $("#lease_details").tabs("select", '<%= params[:selected_tab_name] %>');
+  <% end %>
+        $("form").validity(function() {
+            
+           $("#lease_property_id")
+             .require("Property Id is invalid please link to a property");
+             // $("div").addClass("ui-tabs-hide");
+             FocusTabWithErrors('#lease');
+             $("#lease_details").tabs("select", '<%= params[:selected_tab_name] %>');
+         });
+})
+</script>
+
+<script type="text/javascript">
+// function FocusTabWithErrors(tabPanelName) {
+//     var tabpanel = $(tabPanelName);
+//     var tabselect = tabpanel.find('.error').val($(this).children().text()).parents('div:first').attr('id');
+//     tabpanel.tabs("select",tabselect).addClass('ui-tabs-selected');
+//     tabpanel.tabs("select",tabselect).removeClass('ui-tabs-hide');
+// }
+</script>

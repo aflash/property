@@ -1,0 +1,36 @@
+<h1>Code</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID</b><br>
+  <%= @code.id %>
+</p>
+
+<p>
+  <b>Prefix</b><br>
+  <%= @code.prefix %>
+</p>
+
+<p>
+  <b>Code</b><br>
+  <%= @code.code %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @code.description %>
+</p>
+
+<% if @code.historic? %>
+<p>
+  <b>Historic</b><br>
+  Yes
+</p>
+
+<% end %>
+<div class="form-actions">
+  <%= link_to 'Back', codes_path, :class => 'btn' %>
+  <%= link_to 'Edit', edit_code_path(@code), :class => 'btn' %>
+  <%= link_to 'Delete', code_path(@code), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,26 @@
+<h1>Conditions</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Condition Type</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @conditions.each do |condition| %>
+    <tr>
+      <td><%= link_to condition.id, condition %></td>
+      <td><%= condition.condition_type %></td>
+      <td><%= condition.description %></td>
+      <td>
+        <%= link_to 'Edit', edit_condition_path(condition), :class => 'btn btn-mini' %>
+        <%= link_to 'Destroy', condition, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Condition', new_condition_path, :class => 'btn btn-primary' %>
